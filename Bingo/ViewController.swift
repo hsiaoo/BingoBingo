@@ -7,9 +7,25 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController
+{
+    @IBOutlet weak var modeSegment: UISegmentedControl!
+    @IBOutlet weak var sessionHostBarButton: UIBarButtonItem!
+    @IBOutlet weak var sessionJoinBarButton: UIBarButtonItem!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet var numberButton: [UIButton]!
+    
+    // Multipeer
+    let service = "bingo-bingo"
+    let peerId = MCPeerID(displayName: UIDevice.current.name)
+    var session: MCSession?
+    var advertiserAssistant: MCAdvertiserAssistant?
+    var browserViewController: MCBrowserViewController?
+    
+    // true or false要交由程式判斷，Host session的人當第一個喊數字的人
+    var isMyTurn = true
     var isAiMode: Bool = true
     var isAiTurn: Bool = false
     var hitTheButton: Int = 0
@@ -45,30 +61,61 @@ class ViewController: UIViewController {
     var aivLine = 0
     var aiSlashLine = 0
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        generate(mode: isAiMode)
+        setMultipeerConnectivity()
+    }
     
+    @IBAction func hostSession(_ sender: UIBarButtonItem)
+    {
+        startAdvertising()
+        self.isMyTurn = true
+        self.messageTextField.text = "輪到你囉"
+    }
     
-    @IBAction func restart(_ sender: UIBarButtonItem) {
+    @IBAction func joinSession(_ sender: UIBarButtonItem)
+    {
+        startBrowsing()
+        self.isMyTurn = false
+        self.messageTextField.text = nil
+    }
+    
+    @IBAction func restart(_ sender: UIBarButtonItem)
+    {
         restart()
     }
     
-    @IBOutlet weak var modeSegment: UISegmentedControl!
-    @IBAction func mode(_ sender: UISegmentedControl) {
-        let modeNoti = UIAlertController(title: "模式更改", message: "變更模式後，進行中的遊戲將會被清除並重啟局盤，確定要變更嗎？", preferredStyle: .alert)
+    @IBAction func mode(_ sender: UISegmentedControl)
+    {
+        let modeNoti = UIAlertController(
+            title: "模式更改",
+            message: "變更模式後，進行中的遊戲將會被清除並重啟局盤，確定要變更嗎？",
+            preferredStyle: .alert)
+        
         let yesAction = UIAlertAction(title: "確定", style: .destructive) { (yesAction) in
             let index = sender.selectedSegmentIndex
-            switch index {
-            case 0:
+            switch index
+            {
+            case 0: // AI
                 self.isAiMode = true
-            case 1:
+                self.sessionHostBarButton.isEnabled = false
+                self.sessionJoinBarButton.isEnabled = false
+            case 1: // 雙人
                 self.isAiMode = false
+                self.sessionHostBarButton.isEnabled = true
+                self.sessionJoinBarButton.isEnabled = true
             default:
                 return
             }
             self.restart()
         }
+        
         let noAction = UIAlertAction(title: "取消", style: .default, handler: .init({ (noAction) in
             let index = sender.selectedSegmentIndex
-            if index == 0 {
+            if index == 0
+            {
                 self.modeSegment.selectedSegmentIndex = 1
                 self.isAiMode = false
             } else {
@@ -76,31 +123,56 @@ class ViewController: UIViewController {
                 self.isAiMode = true
             }
         }))
+        
         modeNoti.addAction(yesAction)
         modeNoti.addAction(noAction)
         self.present(modeNoti, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var messageTextField: UITextField!
-    @IBOutlet var numberButton: [UIButton]!
-    @IBAction func numberActionButton(_ sender: UIButton) {
+    @IBAction func numberActionButton(_ sender: UIButton)
+    {
         let currentTag = sender.tag
-        if isAiMode == false {
-            if isSelected[currentTag-1] == false {
+        if isAiMode == false
+        {
+            if isSelected[currentTag-1] == false
+            {
                 numberButton[currentTag-1].isSelected = true
                 isSelected[currentTag-1] = true
-            } else {
+            }
+            else
+            {
                 numberButton[currentTag-1].isSelected = false
                 isSelected[currentTag-1] = false
             }
             updateH(currentTag: currentTag)
             userCheck(currentTag: currentTag)
-        } else if isAiMode == true {
-            if isSelected[currentTag-1] == false {
+            
+            if isMyTurn
+            {
+                // 將選擇的數字傳給對方
+                let selectedNumber = sender.currentTitle ?? ""
+                guard !selectedNumber.isEmpty else { return }
+                
+                self.messageTextField.text = nil
+                let message = "\(self.peerId.displayName)選擇數字：\(selectedNumber)"
+                sendMessage(message)
+            }
+            else
+            {
+                self.messageTextField.text = "輪到你囉"
+            }
+            isMyTurn.toggle()
+        }
+        else if isAiMode == true
+        {
+            if isSelected[currentTag-1] == false
+            {
                 numberButton[currentTag-1].isSelected = true
                 isSelected[currentTag-1] = true
                 hitTheButton += 1
-            } else {
+            }
+            else
+            {
                 numberButton[currentTag-1].isSelected = false
                 isSelected[currentTag-1] = false
                 hitTheButton -= 1
@@ -109,63 +181,63 @@ class ViewController: UIViewController {
             userCheck(currentTag: currentTag)
             
             //AI模式時，將使用者點選的數字存入變數userNumberToAi，接著呼叫scan function
-            if hitTheButton == 1 {
-                if let userNumberToAi = sender.currentTitle {
-                    scanAiButtonTitle(target: userNumberToAi)
-                }
+            if hitTheButton == 1,
+               let userNumberToAi = sender.currentTitle
+            {
+                scanAiButtonTitle(target: userNumberToAi)
             }
             
             aiTurn()
             
-//
-            
             //將hitTheButton歸零
-            if hitTheButton == 2 {
+            if hitTheButton == 2
+            {
                 hitTheButton = 0
             }
         }
         
         //決定messageTextField顯示的文字
-        if isAiMode == true {
-            if aiNumberToUser == 0 {
-                    messageTextField.text = howManyLines()
+        if isAiMode == true
+        {
+            if aiNumberToUser == 0
+            {
+                messageTextField.text = howManyLines()
             } else {
                 let line1 = howManyUserLines()
                 let line2 = howManyAiLines()
-                if line1 == 5 || line2 == 5 {
-                messageTextField.text = "\(howManyLines())"
+                if line1 == 5 || line2 == 5
+                {
+                    messageTextField.text = "\(howManyLines())"
                 } else {
                     messageTextField.text = "\(howManyLines())，AI數字：\(aiNumberToUser)"
                 }
             }
-        } else if isAiMode == false {
-            messageTextField.text = howManyLines()
+        }
+        else if isAiMode == false
+        {
+            print(howManyLines())
         }
     }
     
     //電腦的賓果盤
     @IBOutlet var aiButton: [UIButton]!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        generate(mode: isAiMode)
-        
-    }
-
-    
-    func restart() {
+    func restart()
+    {
         totalLine = 0
         aiTotalLine = 0
         hitTheButton = 0
-        for i in 0 ... isSelected.count - 1 {
+        for i in 0 ... isSelected.count - 1
+        {
             isSelected[i] = false
             isAiSelected[i] = false
             numberButton[i].isSelected = false
             aiButton[i].isSelected = false
             messageTextField.text = ""
         }
-        for i in 0 ... 4 {
+        
+        for i in 0 ... 4
+        {
             h1[i] = false
             aih1[i] = false
             h2[i] = false
@@ -181,20 +253,24 @@ class ViewController: UIViewController {
             vTrue[i] = false
             aivTrue[i] = false
         }
-        for i in 0 ... 1 {
+        
+        for i in 0 ... 1
+        {
             slashTrue[i] = false
             aiSlashTrue[i] = false
         }
         generate(mode: isAiMode)
     }
-
     
-    func generate(mode: Bool) -> () {
+    func generate(mode: Bool) -> ()
+    {
         //ai模式
-        if mode == true {
+        if mode == true
+        {
             var number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
             var number2 = [25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
-            for i in 0 ... number.count - 1 {
+            for i in 0 ... number.count - 1
+            {
                 let index = Int.random(in: 0 ... number.count - 1)
                 let userButtonNumber = number[index]
                 let aiButtonNumber = number2[index]
@@ -203,10 +279,13 @@ class ViewController: UIViewController {
                 number.remove(at: index)
                 number2.remove(at: index)
             }
-        } else {
+        }
+        else
+        {
             //user模式
             var number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-            for i in 0 ... number.count - 1 {
+            for i in 0 ... number.count - 1
+            {
                 let index = Int.random(in: 0 ... number.count - 1)
                 let aNumber = number[index]
                 numberButton[i].setTitle("\(aNumber)", for: .normal)
@@ -216,152 +295,225 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    func updateH(currentTag: Int) {
-        if currentTag <= 5 {
+    func updateH(currentTag: Int)
+    {
+        if currentTag <= 5
+        {
             //確認是h1
             h1[currentTag-1] = isSelected[currentTag-1]
-        } else if currentTag <= 10 {
+        }
+        else if currentTag <= 10
+        {
             //確認是h2
             let r = currentTag%5
-            if r != 0{
+            if r != 0
+            {
                 h2[r-1] = isSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 h2[4] = isSelected[currentTag-1]
             }
-        } else if currentTag <= 15 {
+        }
+        else if currentTag <= 15
+        {
             //確認是h3
             let r = currentTag%5
-            if r != 0{
+            if r != 0
+            {
                 h3[r-1] = isSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 h3[4] = isSelected[currentTag-1]
             }
-        } else if currentTag <= 20 {
+        }
+        else if currentTag <= 20
+        {
             //確認是h4
             let r = currentTag%5
-            if r != 0{
+            if r != 0
+            {
                 h4[r-1] = isSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 h4[4] = isSelected[currentTag-1]
             }
-        } else {
+        }
+        else
+        {
             //確認是h5
             let r = currentTag%5
-            if r != 0{
+            if r != 0
+            {
                 h5[r-1] = isSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 h5[4] = isSelected[currentTag-1]
             }
         }
     }
     
-    
-    func updateAiH(currentTag: Int) {
-        if currentTag <= 5 {
+    func updateAiH(currentTag: Int)
+    {
+        if currentTag <= 5
+        {
             //確認是aih1
             aih1[currentTag-1] = isAiSelected[currentTag-1]
-        } else if currentTag <= 10 {
+        }
+        else if currentTag <= 10
+        {
             //確認是aih2
             let r = currentTag%5
-            if r != 0 {
+            if r != 0
+            {
                 aih2[r-1] = isAiSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 aih2[4] = isAiSelected[currentTag-1]
             }
-        } else if currentTag <= 15 {
+        }
+        else if currentTag <= 15
+        {
             //確認是aih3
             let r = currentTag%5
-            if r != 0 {
+            if r != 0
+            {
                 aih3[r-1] = isAiSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 aih3[4] = isAiSelected[currentTag-1]
             }
-        } else if currentTag <= 20 {
+        }
+        else if currentTag <= 20
+        {
             //確認是aih4
             let r = currentTag%5
-            if r != 0 {
+            if r != 0
+            {
                 aih4[r-1] = isAiSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 aih4[4] = isAiSelected[currentTag-1]
             }
-        } else {
+        }
+        else
+        {
             //確認是aih5
             let r = currentTag%5
-            if r != 0 {
+            if r != 0
+            {
                 aih5[r-1] = isAiSelected[currentTag-1]
-            } else {
+            }
+            else
+            {
                 aih5[4] = isAiSelected[currentTag-1]
             }
         }
     }
     
-    
-    func userCheck(currentTag: Int) {
+    func userCheck(currentTag: Int)
+    {
         //檢查橫向
-        if h1[0] == true && h1[1] == true && h1[2] == true && h1[3] == true && h1[4] == true {
+        if h1[0] == true && h1[1] == true && h1[2] == true && h1[3] == true && h1[4] == true
+        {
             hTrue[0] = true
-        } else {
+        }
+        else
+        {
             hTrue[0] = false
         }
         
-        if h2[0] == true && h2[1] == true && h2[2] == true && h2[3] == true && h2[4] == true {
+        if h2[0] == true && h2[1] == true && h2[2] == true && h2[3] == true && h2[4] == true
+        {
             hTrue[1] = true
-        } else {
+        }
+        else
+        {
             hTrue[1] = false
         }
         
-        if h3[0] == true && h3[1] == true && h3[2] == true && h3[3] == true && h3[4] == true {
+        if h3[0] == true && h3[1] == true && h3[2] == true && h3[3] == true && h3[4] == true
+        {
             hTrue[2] = true
-        } else {
+        }
+        else
+        {
             hTrue[2] = false
         }
         
-        if h4[0] == true && h4[1] == true && h4[2] == true && h4[3] == true && h4[4] == true {
+        if h4[0] == true && h4[1] == true && h4[2] == true && h4[3] == true && h4[4] == true
+        {
             hTrue[3] = true
-        } else {
+        }
+        else
+        {
             hTrue[3] = false
         }
         
-        if h5[0] == true && h5[1] == true && h5[2] == true && h5[3] == true && h5[4] == true {
+        if h5[0] == true && h5[1] == true && h5[2] == true && h5[3] == true && h5[4] == true
+        {
             hTrue[4] = true
-        } else {
+        }
+        else
+        {
             hTrue[4] = false
         }
         
         //檢查直向
         let r = currentTag%5
-        if r != 0 {
-            if h1[r-1] == true && h2[r-1] == true && h3[r-1] == true && h4[r-1] == true && h5[r-1] == true {
+        if r != 0
+        {
+            if h1[r-1] == true && h2[r-1] == true && h3[r-1] == true && h4[r-1] == true && h5[r-1] == true
+            {
                 vTrue[r-1] = true
-            } else {
+            }
+            else
+            {
                 vTrue[r-1] = false
             }
-        } else {
-            if h1[4] == true && h2[4] == true && h3[4] == true && h4[4] == true && h5[4] == true {
+        }
+        else
+        {
+            if h1[4] == true && h2[4] == true && h3[4] == true && h4[4] == true && h5[4] == true
+            {
                 vTrue[4] = true
-            } else {
+            }
+            else
+            {
                 vTrue[4] = false
             }
         }
         
         //檢查斜線
-        if h1[0] == true && h2[1] == true && h3[2] == true && h4[3] == true && h5[4] == true {
+        if h1[0] == true && h2[1] == true && h3[2] == true && h4[3] == true && h5[4] == true
+        {
             slashTrue[0] = true
-        } else {
+        }
+        else
+        {
             slashTrue[0] = false
         }
+        
         if h1[4] == true && h2[3] == true && h3[2] == true && h4[1] == true && h5[0] == true {
             slashTrue[1] = true
-        } else {
+        }
+        else
+        {
             slashTrue[1] = false
         }
     }
     
-    
-    func aiCheck(currentTag: Int) {
+    func aiCheck(currentTag: Int)
+    {
         //檢查橫向
-        if aih1[0] == true && aih1[1] == true && aih1[2] == true && aih1[3] == true && aih1[4] == true {
+        if aih1[0] == true && aih1[1] == true && aih1[2] == true && aih1[3] == true && aih1[4] == true
+        {
             aihTrue[0] = true
         } else {
             aihTrue[0] = false
@@ -420,7 +572,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     func check(currentTag: Int) {
         if isAiMode == false {
             //只需檢查使用者的賓果盤
@@ -431,7 +582,6 @@ class ViewController: UIViewController {
             aiCheck(currentTag: currentTag)
         }
     }
-    
     
     func howManyUserLines() -> Int {
         //檢查橫向
@@ -458,7 +608,6 @@ class ViewController: UIViewController {
         return hLine + vLine + slashLine
     }
     
-    
     func howManyAiLines() -> Int {
         //檢查橫向
         aihLine =  0
@@ -483,7 +632,6 @@ class ViewController: UIViewController {
         }
         return aihLine + aivLine + aiSlashLine
     }
-
     
     func howManyLines() -> String {
         if isAiMode == false {
@@ -493,6 +641,8 @@ class ViewController: UIViewController {
             } else if totalLine == 1 || totalLine == 2 || totalLine == 3 || totalLine == 4 {
                 return "目前有\(totalLine)條連線囉"
             }
+            sendMessage("🎉\(peerId.displayName)贏了🎉")
+            self.messageTextField.text = "🎉You win~ Bingo! Bingo!🎉"
             return "🎉You win~ Bingo! Bingo!🎉"
         } else if isAiMode == true {
             totalLine = howManyUserLines()
@@ -513,7 +663,6 @@ class ViewController: UIViewController {
         }
         return "目前還沒有連線喔"
     }
-    
     
     func scanAiButtonTitle(target: String) {
         print("user number to ai: \(target)")
@@ -537,13 +686,11 @@ class ViewController: UIViewController {
         isAiTurn = true
     }
     
-    
     func random() -> Int {
         let number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
         let index = Int.random(in: 0 ... number.count - 1)
         return number[index]
     }
-    
     
     func aiTurn() {
         let aiNumber = random()
@@ -571,4 +718,116 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - Private method
+    private func setMultipeerConnectivity()
+    {
+        self.session = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
+        self.session?.delegate = self
+        
+        guard let session else { return }
+        
+        self.advertiserAssistant = MCAdvertiserAssistant(
+            serviceType: service,
+            discoveryInfo: nil,
+            session: session)
+        
+        self.browserViewController = MCBrowserViewController(serviceType: self.service, session: session)
+        self.browserViewController?.delegate = self
+    }
+    
+    private func startBrowsing()
+    {
+        guard let browser = browserViewController else { return }
+        
+        present(browser, animated: true)
+    }
+    
+    private func stopBrowsing()
+    {
+        self.browserViewController?.dismiss(animated: true)
+    }
+    
+    private func startAdvertising()
+    {
+        self.advertiserAssistant?.start()
+    }
+    
+    private func stopAdvertising()
+    {
+        self.advertiserAssistant?.stop()
+    }
+    
+    private func sendMessage(_ message: String)
+    {
+        guard
+            let session = self.session,
+            !session.connectedPeers.isEmpty
+        else { return }
+        
+        if let data = message.data(using: .utf8)
+        {
+            do
+            {
+                try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+            } catch let error as NSError {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+extension ViewController: MCSessionDelegate
+{
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState)
+    {
+        switch state
+        {
+        case .connected:
+            print("connected \(peerID.displayName)")
+        case .connecting:
+            print("connecting \(peerID.displayName)")
+        case .notConnected:
+            print("not connected \(peerID.displayName)")
+        default:
+            print("unknown status for \(peerID.displayName)")
+        }
+    }
+    
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)
+    {
+        let receivedMessage = String(data: data, encoding: .utf8) ?? ""
+        
+        guard !receivedMessage.isEmpty else { return }
+        
+        DispatchQueue.main.async
+        {
+            self.messageTextField.text = receivedMessage
+        }
+    }
+    
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID)
+    {
+    }
+    
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress)
+    {
+    }
+    
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?)
+    {
+    }
+}
+
+extension ViewController: MCBrowserViewControllerDelegate
+{
+    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController)
+    {
+        dismiss(animated: true)
+    }
+    
+    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController)
+    {
+        // 按下browser Cancel按鈕後會觸發
+        dismiss(animated: true)
+    }
 }

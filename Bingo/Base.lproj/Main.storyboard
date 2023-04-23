@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bk1-6l-Mv4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bk1-6l-Mv4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,33 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zD-H8-oU3">
-                                <rect key="frame" x="0.0" y="189" width="414" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zD-H8-oU3">
+                                <rect key="frame" x="0.0" y="178" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6qe-q9-HGJ"/>
                                 </constraints>
-                                <color key="textColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-zO-r6g" userLabel="userButtons">
-                                <rect key="frame" x="52" y="254" width="310" height="310"/>
+                                <rect key="frame" x="52" y="243" width="310" height="310"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AgM-RQ-uXM">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLV-Wt-dx2">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLV-Wt-dx2">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="giT-uL-1Zj"/>
                                                     <constraint firstAttribute="width" constant="50" id="ha4-Ce-a8v"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -51,17 +50,16 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TW1-sY-RIO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzO-uq-yuR">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzO-uq-yuR">
                                                 <rect key="frame" x="65" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="WNc-Bu-0Qj"/>
                                                     <constraint firstAttribute="height" constant="50" id="j1Z-f9-lMX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -70,17 +68,16 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IQM-kw-u3p"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0t-gy-wWL">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0t-gy-wWL">
                                                 <rect key="frame" x="130" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="NVP-Ja-QRu"/>
                                                     <constraint firstAttribute="width" constant="50" id="zuJ-qf-dHl"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -89,17 +86,16 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOa-HH-2qv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-YT-2Qo">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-YT-2Qo">
                                                 <rect key="frame" x="195" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="C1n-Ex-PPD"/>
                                                     <constraint firstAttribute="height" constant="50" id="aQA-qs-9xx"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -108,17 +104,16 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fSh-aN-wL2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5E-aT-1XG">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5E-aT-1XG">
                                                 <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="lmy-6g-RrT"/>
                                                     <constraint firstAttribute="height" constant="50" id="mDC-PF-kJT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -132,17 +127,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="w1C-UQ-ya2">
                                         <rect key="frame" x="0.0" y="65" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-b1-Upz">
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-b1-Upz">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="8Ks-ci-vEZ"/>
                                                     <constraint firstAttribute="height" constant="50" id="imX-VF-ZaX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -151,17 +144,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iIE-SJ-iFo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-e5-FXU">
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-e5-FXU">
                                                 <rect key="frame" x="65" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="DHq-KV-jDl"/>
                                                     <constraint firstAttribute="height" constant="50" id="HJp-MX-HPg"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -170,17 +161,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ea-QX-NxL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ify-49-tNh">
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ify-49-tNh">
                                                 <rect key="frame" x="130" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="TMZ-Ca-JzL"/>
                                                     <constraint firstAttribute="height" constant="50" id="fXQ-7e-gZS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -189,17 +178,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6I-C8-SfZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqd-h7-wmv">
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqd-h7-wmv">
                                                 <rect key="frame" x="195" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="BFG-k5-Wwq"/>
                                                     <constraint firstAttribute="height" constant="50" id="Nei-iW-rDa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -208,17 +195,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mTi-eF-yPb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-wA-Qr7">
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-wA-Qr7">
                                                 <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="5hT-b1-ovq"/>
                                                     <constraint firstAttribute="height" constant="50" id="GLc-WM-Mwc"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -232,17 +217,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zzb-oY-WLv">
                                         <rect key="frame" x="0.0" y="130" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNs-I0-aok">
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNs-I0-aok">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="D2f-q6-7Z9"/>
                                                     <constraint firstAttribute="height" constant="50" id="Rm9-lx-5u1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -251,17 +234,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yAg-l8-pZj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qle-c7-o1Z">
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qle-c7-o1Z">
                                                 <rect key="frame" x="65" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HxK-MD-ZxQ"/>
                                                     <constraint firstAttribute="height" constant="50" id="pSt-GE-f4M"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -270,17 +251,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXj-gc-185"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e56-Zx-kLW">
+                                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e56-Zx-kLW">
                                                 <rect key="frame" x="130" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bSf-yx-V6i"/>
                                                     <constraint firstAttribute="width" constant="50" id="p8A-B1-lre"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -289,17 +268,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iY9-Sv-4yA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gd-Sf-Emk">
+                                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gd-Sf-Emk">
                                                 <rect key="frame" x="195" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="AFJ-L6-OpM"/>
                                                     <constraint firstAttribute="height" constant="50" id="XKm-qK-52k"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -308,17 +285,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eqr-tY-Mmi"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-Hh-RUC">
+                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-Hh-RUC">
                                                 <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="9eg-hH-Stq"/>
                                                     <constraint firstAttribute="height" constant="50" id="AIk-hr-wFr"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -332,17 +307,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XIa-bV-AtU">
                                         <rect key="frame" x="0.0" y="195" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-xW-TWF">
+                                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-xW-TWF">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="66f-NF-2sX"/>
                                                     <constraint firstAttribute="width" constant="50" id="794-Yu-nSl"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -351,17 +324,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E6P-LS-uRL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-rn-ZQ1">
+                                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-rn-ZQ1">
                                                 <rect key="frame" x="65" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="qV8-2k-u0T"/>
                                                     <constraint firstAttribute="height" constant="50" id="xji-Cw-baa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -370,17 +341,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w5F-24-6HT"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTb-Pk-xub">
+                                            <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTb-Pk-xub">
                                                 <rect key="frame" x="130" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="NiR-WI-P5p"/>
                                                     <constraint firstAttribute="width" constant="50" id="Vx5-ei-nS8"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -389,17 +358,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pbA-aO-mFf"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVQ-yj-r1n">
+                                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVQ-yj-r1n">
                                                 <rect key="frame" x="195" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9ti-ll-8h4"/>
                                                     <constraint firstAttribute="width" constant="50" id="YK0-8u-tqT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -408,17 +375,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iv1-dl-XkF"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzj-s4-OST">
+                                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzj-s4-OST">
                                                 <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="dJl-8R-nxL"/>
                                                     <constraint firstAttribute="height" constant="50" id="iNZ-Df-0EP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -432,17 +397,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="w9J-rJ-6EE">
                                         <rect key="frame" x="0.0" y="260" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adV-Bt-rS9">
+                                            <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adV-Bt-rS9">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="MFI-gl-Ccs"/>
                                                     <constraint firstAttribute="width" constant="50" id="QKh-E1-1FA"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -451,17 +414,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TfJ-yR-mRZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmG-df-jhA">
+                                            <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmG-df-jhA">
                                                 <rect key="frame" x="65" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="lv7-Lx-1lP"/>
                                                     <constraint firstAttribute="height" constant="50" id="wJl-p1-XHQ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -470,17 +431,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfz-q6-ae7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-bs-xIf">
+                                            <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-bs-xIf">
                                                 <rect key="frame" x="130" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Fff-wZ-jAb"/>
                                                     <constraint firstAttribute="width" constant="50" id="V9N-bL-l8l"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -489,17 +448,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q0r-f9-EXm"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUZ-Dt-rRy">
+                                            <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUZ-Dt-rRy">
                                                 <rect key="frame" x="195" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="wM0-MA-A9V"/>
                                                     <constraint firstAttribute="width" constant="50" id="whO-ws-DEp"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -508,17 +465,15 @@
                                                     <action selector="numberActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uo7-jY-7Su"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAK-Zv-7MY">
+                                            <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAK-Zv-7MY">
                                                 <rect key="frame" x="260" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="At6-fE-Cpy"/>
                                                     <constraint firstAttribute="width" constant="50" id="pER-Gh-Tfc"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <color key="titleColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" red="1" green="0.2450343801" blue="0.71832178420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -532,19 +487,18 @@
                                 </subviews>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M83-kL-c2R">
-                                <rect key="frame" x="32" y="123" width="349" height="32"/>
-                                <color key="backgroundColor" red="0.97847884890000003" green="0.94388240580000005" blue="0.74506485460000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="32" y="112" width="349" height="32"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <segments>
                                     <segment title="" image="computer"/>
                                     <segment title="" image="user"/>
                                 </segments>
-                                <color key="tintColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="mode:" destination="BYZ-38-t0r" eventType="valueChanged" id="jx1-DO-JjP"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-XV-jfi" userLabel="aiButtons">
-                                <rect key="frame" x="122" y="599" width="170" height="182"/>
+                                <rect key="frame" x="122" y="588" width="170" height="182"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tky-dH-9wS">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
@@ -676,12 +630,12 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="M83-kL-c2R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="0QS-e1-AgT"/>
                             <constraint firstItem="0zD-H8-oU3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6gu-GK-aXm"/>
                             <constraint firstItem="0zD-H8-oU3" firstAttribute="top" secondItem="M83-kL-c2R" secondAttribute="bottom" constant="35" id="D7M-F0-ktp"/>
-                            <constraint firstItem="M83-kL-c2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="Q2M-EO-XCN"/>
+                            <constraint firstItem="M83-kL-c2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Q2M-EO-XCN"/>
                             <constraint firstItem="qhh-zO-r6g" firstAttribute="top" secondItem="0zD-H8-oU3" secondAttribute="bottom" constant="35" id="T3L-GV-U8m"/>
                             <constraint firstItem="nKc-XV-jfi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W7M-qa-OYS"/>
                             <constraint firstItem="qhh-zO-r6g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dMU-uU-wvF"/>
@@ -691,16 +645,32 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hcD-H3-tjV">
-                        <barButtonItem key="rightBarButtonItem" image="restart" id="eXe-6m-Y1y">
-                            <color key="tintColor" red="0.97305089239999998" green="0.9438121183" blue="0.76561664780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="restart:" destination="BYZ-38-t0r" id="sxc-y0-eFk"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="restart" id="eXe-6m-Y1y">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="restart:" destination="BYZ-38-t0r" id="sxc-y0-eFk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Join" id="E7m-vU-1w5">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="joinSession:" destination="BYZ-38-t0r" id="ID6-4t-zvP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Host" id="3mw-ux-mnP">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="hostSession:" destination="BYZ-38-t0r" id="tk1-eH-8Zf"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextField" destination="0zD-H8-oU3" id="M7m-kT-MQy"/>
                         <outlet property="modeSegment" destination="M83-kL-c2R" id="fGX-UI-0N3"/>
+                        <outlet property="sessionHostBarButton" destination="3mw-ux-mnP" id="17W-T8-MbE"/>
+                        <outlet property="sessionJoinBarButton" destination="E7m-vU-1w5" id="qcE-uI-RfP"/>
                         <outletCollection property="numberButton" destination="vLV-Wt-dx2" collectionClass="NSMutableArray" id="RuR-g0-f1D"/>
                         <outletCollection property="numberButton" destination="IzO-uq-yuR" collectionClass="NSMutableArray" id="TGE-fR-wba"/>
                         <outletCollection property="numberButton" destination="h0t-gy-wWL" collectionClass="NSMutableArray" id="Kvk-92-0Np"/>
@@ -763,7 +733,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bk1-6l-Mv4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IVn-fO-9Re">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -780,5 +750,11 @@
         <image name="computer" width="24" height="24"/>
         <image name="restart" width="32" height="32"/>
         <image name="user" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
