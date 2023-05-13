@@ -24,20 +24,45 @@
                                     <constraint firstAttribute="width" secondItem="jXT-mz-Cxa" secondAttribute="height" multiplier="1:1" id="FoZ-Jh-INP"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XAP-7M-c9q">
-                                <rect key="frame" x="16" y="200" width="361" height="18.666666666666664"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XAP-7M-c9q">
+                                <rect key="frame" x="16" y="126.33333333333331" width="361" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cIq-NQ-MAj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dji-oI-cL6">
+                                <rect key="frame" x="20.000000000000004" y="79" width="39.333333333333343" height="39.333333333333343"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Dji-oI-cL6" secondAttribute="height" multiplier="1:1" id="kME-gx-0go"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapCloseButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xu3-MN-03O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XAP-7M-c9q" secondAttribute="trailing" constant="16" id="5Do-Sz-fIt"/>
                             <constraint firstItem="jXT-mz-Cxa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7Ua-xN-C4k"/>
+                            <constraint firstItem="XAP-7M-c9q" firstAttribute="top" secondItem="Dji-oI-cL6" secondAttribute="bottom" constant="8" id="T4q-0V-zyR"/>
+                            <constraint firstItem="Dji-oI-cL6" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.1" id="Vmw-3r-mCJ"/>
                             <constraint firstItem="jXT-mz-Cxa" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="cIf-jJ-jdw"/>
+                            <constraint firstItem="Dji-oI-cL6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="jWg-1S-5mr"/>
                             <constraint firstItem="XAP-7M-c9q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="xSO-3o-YzV"/>
                             <constraint firstItem="jXT-mz-Cxa" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="xyL-6n-Y7M"/>
+                            <constraint firstItem="Dji-oI-cL6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="zrE-8o-Y3l"/>
                         </constraints>
                     </view>
                     <connections>
@@ -46,12 +71,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="-28"/>
+            <point key="canvasLocation" x="55.725190839694655" y="-28.169014084507044"/>
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
